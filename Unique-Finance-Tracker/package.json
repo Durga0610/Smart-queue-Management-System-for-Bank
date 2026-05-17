@@ -10,6 +10,12 @@
     "dev": "pnpm.cmd -r --parallel run dev",
     "db:push": "pnpm.cmd --filter @workspace/db run push"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild"
+    ]
+  },
   "private": true,
   "devDependencies": {
     "cross-env": "^10.1.0",

@@ -18,8 +18,7 @@ export const usersTable = sqliteTable(
     role: text("role").notNull().default("customer"),
     karma: integer("karma").notNull().default(50),
     createdAt: integer("created_at", { mode: "timestamp" }).default(sql`CURRENT_TIMESTAMP`).notNull(),
-  },
-  (t) => [uniqueIndex("users_email_unique").on(t.email)],
+  }
 );
 
 export const branchesTable = sqliteTable("branches", {

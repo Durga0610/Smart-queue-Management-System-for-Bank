@@ -6,6 +6,7 @@ pnpm install
 
 $env:PORT="5000"
 $env:BASE_PATH="/"
+$env:DATABASE_URL=($PWD -replace '\\', '/') + '/sqlite.db'
 
 Write-Host "Ensuring Database Schema is up to date..." -ForegroundColor Cyan
 pnpm.cmd --filter @workspace/db run push
