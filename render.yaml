@@ -12,10 +12,6 @@ services:
       - key: PORT
         value: 10000
       - key: DATABASE_URL
-        value: /var/data/sqlite.db
+        value: ./sqlite.db
       - key: SESSION_SECRET
         generateValue: true
-    disk:
-      name: sqlite-data
-      mountPath: /var/data
-      sizeGB: 1
