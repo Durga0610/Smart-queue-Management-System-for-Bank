@@ -326,6 +326,12 @@ export async function customFetch<T = unknown>(
   input: RequestInfo | URL,
   options: CustomFetchOptions = {},
 ): Promise<T> {
+  // If running on GitHub Pages (github.io) or running in demo mode, delegate to the mock backend client-side
+  if (typeof window !== "undefined" && (window.location.hostname.endsWith("github.io") || window.location.search.includes("demo=true"))) {
+    const { mockFetch } = await import("./mock-backend");
+    return mockFetch<T>(input, options);
+  }
+
   input = applyBaseUrl(input);
   const { responseType = "auto", headers: headersInit, ...init } = options;
 
