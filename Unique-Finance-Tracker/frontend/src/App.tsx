@@ -49,10 +49,14 @@ function Router() {
 }
 
 function App() {
+  const routerBase = typeof window !== "undefined" && window.location.hostname.endsWith("github.io") 
+    ? "/Smart-queue-Management-System-for-Bank" 
+    : "";
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+        <WouterRouter base={routerBase}>
           <Router />
         </WouterRouter>
         <Toaster />
